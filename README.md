@@ -1,4 +1,4 @@
-# 🌍 World Explorer
+# 🌍 Explorando o Mundo
 
 Uma aplicação React + TypeScript para explorar informações sobre países do mundo, construída com Vite e React Router.
 
