@@ -2,7 +2,6 @@
 
 Uma aplicação React + TypeScript para explorar informações sobre países do mundo, construída com Vite e React Router.
 
-![World Explorer](https://restcountries.com/v3.1/name/brazil?fields=flags)
 
 ## ✨ Funcionalidades
 
