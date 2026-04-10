@@ -3,6 +3,14 @@ import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { CountryPage } from './pages/CountryPage';
 
+/**
+ *   - "/"               → Página inicial com listagem e filtros de países
+ *   - "/country/:code"  → Página de detalhes de um país (código CCA3 na URL)
+ *   - "*"               → Página 404 para rotas não reconhecidas
+ *
+ * O <Header /> é renderizado fora das rotas para aparecer em todas as páginas.
+ */
+
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +23,11 @@ function App() {
     </BrowserRouter>
   );
 }
+
+/**
+ * Componente exibido quando o usuário acessa uma URL inexistente.
+ * Mostra um código 404 estilizado e um link para voltar à home.
+ */
 
 function NotFound() {
   return (

@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 
+//Componente de cabeçalho fixo, presente em todas as páginas.
 export function Header() {
   const location = useLocation();
   const isHome = location.pathname === '/';

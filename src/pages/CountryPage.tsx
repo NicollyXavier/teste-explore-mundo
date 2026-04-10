@@ -4,6 +4,21 @@ import type { Country } from '../types/country';
 import { fetchCountryByCode, fetchCountriesByCodes, formatPopulation, formatArea } from '../utils/api';
 import styles from './CountryPage.module.css';
 
+/**
+ * Página de detalhes de um país específico.
+ *
+ * O código do país (CCA3) é extraído da URL via `useParams`.
+ * Sempre que o `code` muda (ex: usuário clica em um país fronteiriço),
+ * o `useEffect` rebusca os dados do novo país.
+ *
+ * Fluxo de carregamento:
+ * 1. Exibe <LoadingSkeleton /> enquanto aguarda a resposta principal.
+ * 2. Ao receber os dados, renderiza o layout completo.
+ * 3. Em paralelo, busca os países fronteiriços e os adiciona ao estado
+ *    quando disponíveis (os borders aparecem depois do conteúdo principal).
+ *
+ * Em caso de erro ou país não encontrado, exibe uma mensagem com link de volta.
+ */
 export function CountryPage() {
   const { code } = useParams<{ code: string }>();
   const [country, setCountry] = useState<Country | null>(null);
@@ -165,6 +180,13 @@ export function CountryPage() {
   );
 }
 
+/**
+ * Componente "pill" para exibir uma estatística destacada na faixa superior.
+ *
+ * @param label - Nome da informação (ex: "População")
+ * @param value - Valor formatado (ex: "215.3M")
+ * @param icon - Caractere Unicode usado como ícone decorativo
+ */
 function StatPill({ label, value, icon }: { label: string; value: string; icon: string }) {
   return (
     <div className={styles.pill}>
@@ -177,6 +199,13 @@ function StatPill({ label, value, icon }: { label: string; value: string; icon: 
   );
 }
 
+/**
+ * Componente de seção com título e conteúdo agrupado.
+ * Usado para organizar as informações detalhadas do país em blocos temáticos.
+ *
+ * @param title - Título da seção (ex: "Geografia")
+ * @param children - Linhas de dados (<Row />) que compõem a seção
+ */
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className={styles.section}>
@@ -186,6 +215,12 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
+/**
+ * Componente de linha rótulo/valor para exibir um par de informação.
+ *
+ * @param label - Nome do campo (ex: "Área total")
+ * @param value - Valor correspondente (ex: "8,515,767 km²")
+ */
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className={styles.row}>
@@ -195,6 +230,11 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
+/**
+ * Esqueleto de carregamento para a página de detalhes.
+ * Exibe um placeholder animado enquanto os dados do país são buscados,
+ * evitando um salto de layout brusco ao carregar o conteúdo real.
+ */
 function LoadingSkeleton() {
   return (
     <main className={styles.main}>

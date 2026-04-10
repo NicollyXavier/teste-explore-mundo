@@ -5,11 +5,21 @@ import { SearchBar } from '../components/SearchBar';
 import { SubregionFilter } from '../components/SubregionFilter';
 import styles from './HomePage.module.css';
 
+/**
+ * Página inicial da aplicação — exibe todos os países em uma grade filtrável.
+ *
+ * Fluxo de dados:
+ * 1. `useCountries` busca todos os países da API e os armazena no estado local.
+ * 2. `useSubregions` extrai as sub-regiões únicas da lista para popular o filtro.
+ * 3. `useFilteredCountries` combina busca textual e filtro de sub-região para
+ *    calcular a lista final de países a exibir — recalcula apenas quando necessário.
+ */
 export function HomePage() {
   const { countries, loading, error } = useCountries();
   const [search, setSearch] = useState('');
   const [subregion, setSubregion] = useState('');
 
+  // Deriva sub-regiões e lista filtrada a partir da lista completa e dos filtros
   const subregions = useSubregions(countries);
   const filtered = useFilteredCountries(countries, search, subregion);
 

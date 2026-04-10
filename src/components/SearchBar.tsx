@@ -6,6 +6,12 @@ interface Props {
   placeholder?: string;
 }
 
+/**
+ * Campo de busca controlado para filtrar países pelo nome.
+ * @param value - Texto atual da busca
+ * @param onChange - Função chamada com o novo valor ao digitar ou limpar
+ * @param placeholder - Texto exibido quando o campo está vazio
+ */
 export function SearchBar({ value, onChange, placeholder = 'Procurar Países…' }: Props) {
   return (
     <div className={styles.wrap}>

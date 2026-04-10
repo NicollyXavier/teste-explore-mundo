@@ -1,3 +1,7 @@
+/**
+ * Interface principal que representa um país retornado pela API RestCountries.
+ * Todos os campos opcionais (?) podem não estar presentes para todos os países.
+ */
 export interface Country {
   name: {
     common: string;

@@ -6,6 +6,16 @@ interface Props {
   onChange: (val: string) => void;
 }
 
+/**
+ * Dropdown (select) para filtrar países por sub-região.
+ *
+ * A primeira opção ("Todas as Sub-Regiões") tem valor "" e representa
+ * a ausência de filtro — quando selecionada, todos os países são exibidos.
+ *
+ * @param subregions - Array com os nomes das sub-regiões disponíveis
+ * @param selected - Valor da sub-região selecionada no momento
+ * @param onChange - Função chamada com a nova sub-região ao mudar a seleção
+ */
 export function SubregionFilter({ subregions, selected, onChange }: Props) {
   return (
     <div className={styles.wrap}>

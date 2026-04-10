@@ -8,7 +8,15 @@ interface Props {
   index: number;
 }
 
+/**
+ * Card clicável que representa um país na grade da página inicial.
+ * O card inteiro é um link (<Link>) que navega para /country/:cca3.
+ *
+ * @param country - Objeto com os dados do país
+ * @param index - Posição do card na lista (para stagger de animação)
+ */
 export function CountryCard({ country, index }: Props) {
+  // Limita o atraso máximo a 400ms para que cards distantes não demorem demais
   const delay = Math.min(index * 30, 400);
 
   return (
